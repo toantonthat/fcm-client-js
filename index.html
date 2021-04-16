@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Spring FCM Client</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./src/css/main.css'>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <!-- <script src='./dist/bundle.js'></script> -->
+    <script src='./src/js/firebase.js'></script>
+</head>
+
+<body>
+    <div>
+        <h1>Token:</h1>
+        <p id="pushLabel"></p>
+    </div>
+    <script type="text/javascript">
+        messaging.getToken().then((currentToken) => {
+            $('#pushLabel').text(currentToken);
+        }).catch((err) => {
+            console.log('getToken error: ' + err);
+        });
+        messaging.onMessage((payload) => {
+            console.log('Message received. ', payload);
+            console.log('payload ', payload);
+        });
+    </script>
+</body>
+
+</html>
